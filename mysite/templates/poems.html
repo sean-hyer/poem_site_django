@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}General Poems{% endblock %}
+
+{% block content %}
+<h1>General Poems</h1>
+{% if gen_poem_list %}
+    <ul>
+    {% for poem in gen_poem_list %}
+        <li><a href="/{{ poem.id }}/">{{ poem.title }}</a> by {{ poem.author }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No poems are available.</p>
+{% endif %}
+{% endblock %}

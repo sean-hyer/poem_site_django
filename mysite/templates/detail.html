@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ poem.title }}{% endblock %}
+
+{% block content %}<h1>{{ poem.title }}</h1>
+<ul>
+{% for verse in poem.verse_set.all %}
+    <p>{{ verse.verse|linebreaks }}</p>
+{% endfor %}
+</ul>
+<p>- {{ poem.author }}</p>
+{% endblock %}
+
+<!--
+REFERENCES
+
+Line breaks in text inputs:
+https://stackoverflow.com/questions/1894930/django-allow-line-break-from-textarea-input
+-->

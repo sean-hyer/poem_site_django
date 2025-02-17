@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Love Poems{% endblock %}
+
+{% block content %}
+<h1>Love Poems</h1>
+{% if love_poem_list %}
+    <ul>
+    {% for poem in love_poem_list %}
+        <li><a href="/{{ poem.id }}/">{{ poem.title }}</a> by {{ poem.author }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No poems are available.</p>
+{% endif %}
+{% endblock %}

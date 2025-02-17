@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Submit a Poem{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<!--
+I'd like to have a button like in the Admin screen
+Where you can add more boxes for extra verses
+But I've spent long enough getting this two-part form to work.
+-->
+<h4>New Poem</h4>
+<form method="post">
+    {% csrf_token %}
+<p>
+    <label for="id_title">Title:</label>
+    <input type="text" name="title" maxlength="100" required id="id_title">   
+</p>
+
+<p>
+    <label for="id_love">Is this a love poem?</label>
+    <input type="checkbox" name="love" id="id_love">
+</p>
+    
+<p>
+    <label for="id_author">Author:</label>
+    <input type="text" name="author" value="Anonymous" maxlength="30" required id="id_author">
+</p>
+
+<h4>Verses</h4>
+        
+<input type="hidden" name="verse_set-TOTAL_FORMS" value="5" id="id_verse_set-TOTAL_FORMS"><input type="hidden" name="verse_set-INITIAL_FORMS" value="0" id="id_verse_set-INITIAL_FORMS"><input type="hidden" name="verse_set-MIN_NUM_FORMS" value="0" id="id_verse_set-MIN_NUM_FORMS"><input type="hidden" name="verse_set-MAX_NUM_FORMS" value="1000" id="id_verse_set-MAX_NUM_FORMS">
+
+<p>
+    <textarea name="verse_set-0-verse" cols="40" rows="5" id="id_verse_set-0-verse">
+    </textarea>
+</p>
+   
+
+<input type="hidden" name="verse_set-0-poem" id="id_verse_set-0-poem"><input type="hidden" name="verse_set-0-id" id="id_verse_set-0-id">
+
+<p>
+    <textarea name="verse_set-1-verse" cols="40" rows="5" id="id_verse_set-1-verse">
+    </textarea>
+</p>
+    
+<input type="hidden" name="verse_set-1-poem" id="id_verse_set-1-poem"><input type="hidden" name="verse_set-1-id" id="id_verse_set-1-id">
+        
+<p>
+    <textarea name="verse_set-2-verse" cols="40" rows="5" id="id_verse_set-2-verse">
+    </textarea>
+</p>
+
+<input type="hidden" name="verse_set-2-poem" id="id_verse_set-2-poem"><input type="hidden" name="verse_set-2-id" id="id_verse_set-2-id">
+
+<p>
+    <textarea name="verse_set-3-verse" cols="40" rows="5" id="id_verse_set-3-verse">
+    </textarea>
+</p>
+
+<input type="hidden" name="verse_set-3-poem" id="id_verse_set-3-poem"><input type="hidden" name="verse_set-3-id" id="id_verse_set-3-id">
+
+<p>
+    <textarea name="verse_set-4-verse" cols="40" rows="5" id="id_verse_set-4-verse">
+    </textarea>
+</p>
+
+<input type="hidden" name="verse_set-4-poem" id="id_verse_set-4-poem"><input type="hidden" name="verse_set-4-id" id="id_verse_set-4-id">
+       
+
+<input type="submit" value="Submit" />
+</form>
+    
+{% else %}
+    <p>You must be logged in to submit a poem!</p>
+{% endif %}
+{% endblock %}
+
+<!--
+REFERENCES
+
+The structure of the form
+I viewed it in view page source so I could make edits
+https://github.com/AndrewIngram/django-extra-views
+-->
