@@ -4,7 +4,8 @@ from .models import Poem, Verse
 
 
 class VerseInline(admin.StackedInline):
-    '''This class will display verses'''
+    '''This class will contain verses, which is the way the text of a
+    poem is stored.'''
     model = Verse
     extra = 3
 
