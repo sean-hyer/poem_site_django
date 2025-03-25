@@ -14,6 +14,9 @@ You will also need to download [Django Extra Views](https://github.com/AndrewIng
 You can do this through pip by running the command:
 pip install django-extra-views
 
+You can also install and run the whole thing through a docker container.
+The command is $docker run -it -p 8000:8000 shyer2k/poem_website
+
 ## To Do
 
 Right now, there is no way to add a poem containing more than five verses.
